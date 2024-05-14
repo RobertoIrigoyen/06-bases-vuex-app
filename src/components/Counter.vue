@@ -6,7 +6,7 @@
 
     <button @click="increment">Incrementar 1</button>
     <button @click="incrementBy(5)">Incrementar 5</button>
-    <button @click="incrementByRadondom">Incrementar Random</button>
+    <button @click="incrementRandomInt">Incrementar Random</button>
 
     <h1>MapState</h1>
     <h2>mapState: {{ count }}</h2>
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 export default {
   computed: {
     counComputed() {
@@ -35,10 +35,8 @@ export default {
     incrementBy(val) {
       this.$store.commit('incrementBy', val)
     },
-
-    incrementByRadondom(){
-      this.$store.dispatch('incrementRandomInt')
-    }
+    ...mapActions(['incrementRandomInt'])
+    
   }
 
 
