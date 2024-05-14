@@ -16,12 +16,17 @@ export default createStore({
       state.count += val;
       state.lastMutation = "incrementado en un valor " + val;
     },
+    setLoading(state, value) {
+      state.isLoading = value;
+    },
   },
   actions: {
-    async incrementRandomInt(context) {
+    async incrementRandomInt({ commit }) {
+      commit("setLoading", true);
       const randomInt = await getRandomInt();
-
-      context.commit("incrementBy", randomInt);
+      
+      commit("incrementBy", randomInt);
+      commit("setLoading", false);
     },
   },
 });
