@@ -11,6 +11,8 @@
     <h1>MapState</h1>
     <h2>mapState: {{ count }}</h2>
     <h2>mapState: {{ lastMutation }}</h2>
+
+    <h2>Direct getter: {{ $store.getters.squareCount }}</h2>
   </div>
 </template>
 
